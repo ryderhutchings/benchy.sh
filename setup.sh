@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # Based on Jeff Geerling's sbc-reviews workflow + custom extensions
-# by Ryder Hutchings — https://github.com/ryderhutchings
+# by Ryder Hutchings: https://github.com/ryderhutchings
 #
 
 set -e
