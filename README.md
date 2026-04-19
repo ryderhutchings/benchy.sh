@@ -2,6 +2,8 @@
 
 Prototype script setup for automating [Jeff Geerling's SBC benchmark workflow](https://github.com/geerlingguy/sbc-reviews).
 
+>[!IMPORTANT]
+> Only validated on Debian 13 (Trixie). Other distros may require adjustments.
 ---
 
 ## Setup
