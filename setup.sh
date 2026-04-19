@@ -44,9 +44,9 @@ cd ~/tinymembench && make && cd ~
 git clone https://github.com/rigtorp/c2clat.git && cd ~/c2clat && make && cd ~ || \
     echo "[!] c2clat build failed check the gist for manual steps"
 
-wget -q -O ~/benchmarks/disk-benchmark.sh https://raw.githubusercontent.com/geerlingguy/pi-cluster/master/benchmarks/disk-benchmark.sh
-wget -q -O ~/benchmarks/sbc-bench.sh https://raw.githubusercontent.com/ThomasKaiser/sbc-bench/master/sbc-bench.sh
-chmod +x ~/benchmarks/disk-benchmark.sh ~/benchmarks/sbc-bench.sh
+wget -q -O ~/Benchy/disk-benchmark.sh https://raw.githubusercontent.com/geerlingguy/pi-cluster/master/benchmarks/disk-benchmark.sh
+wget -q -O ~/Benchy/sbc-bench.sh https://raw.githubusercontent.com/ThomasKaiser/sbc-bench/master/sbc-bench.sh
+chmod +x ~/Benchy/disk-benchmark.sh ~/Benchy/sbc-bench.sh
 
 # Geekbench
 mkdir -p ~/geekbench6
