@@ -3,10 +3,11 @@
 # Based on Jeff Geerling's sbc-reviews workflow + custom extensions
 # by Ryder Hutchings: https://github.com/ryderhutchings
 #
+set -euo pipefail
 
-set -e
+mkdir -p ~/Benchy
+echo "[*] Benchy directory ready at ~/Benchy"
 
-# APT packages
 sudo apt update
 sudo apt install -y \
     hwloc \
@@ -26,13 +27,16 @@ sudo apt install -y vkmark || echo "[!] vkmark not available via 'apt' compile f
 # Ollama
 curl -fsSL https://ollama.com/install.sh | sh
 
-sudo systemctl start ollama && sleep 5 # Add fix for Error: could not connect to ollama server, run 'ollama serve' to start it
+sudo systemctl start ollama
+
+echo "[*] Waiting for Ollama API..."
+until curl -s http://127.0.0.1:11434 > /dev/null; do
+    sleep 1
+done
 
 ollama pull tinyllama:1.1b
 ollama pull deepseek-r1:1.5b
 ollama pull llama3.2:3b
-
-mkdir -p ~/Benchy
 
 cd ~
 [ ! -d ~/top500-benchmark ] && git clone https://github.com/geerlingguy/top500-benchmark.git
@@ -41,8 +45,41 @@ cd ~
 cd ~/tinymembench && make && cd ~
 
 # c2clat
-git clone https://github.com/rigtorp/c2clat.git && cd ~/c2clat && make && cd ~ || \
-    echo "[!] c2clat build failed check the gist for manual steps"
+git clone https://github.com/rigtorp/c2clat.git || true
+
+if [ -d ~/c2clat ]; then
+    cd ~/c2clat
+
+    echo "[*] Inspecting c2clat contents..."
+    ls
+
+    # Case 1: Makefile exists
+    if [ -f Makefile ]; then
+        make || echo "[!] make failed for c2clat"
+
+    # Case 2: CMake project
+    elif [ -f CMakeLists.txt ]; then
+        mkdir -p build
+        cd build
+        cmake ..
+        make || echo "[!] cmake build failed for c2clat"
+        cd ..
+
+    else
+        echo "[!] No Makefile or CMake found. Attempting manual compile..."
+
+        SRC=$(find . -maxdepth 2 -name "*.c" | head -n 1)
+
+        if [ -n "$SRC" ]; then
+            gcc -O2 -pthread "$SRC" -o c2clat || echo "[!] manual gcc build failed"
+        else
+            echo "[!] No C source found cannot build c2clat"
+        fi
+    fi
+
+    cd ~
+fi
+
 
 wget -q -O ~/Benchy/disk-benchmark.sh https://raw.githubusercontent.com/geerlingguy/pi-cluster/master/benchmarks/disk-benchmark.sh
 wget -q -O ~/Benchy/sbc-bench.sh https://raw.githubusercontent.com/ThomasKaiser/sbc-bench/master/sbc-bench.sh
