@@ -2,7 +2,7 @@
 set -e
 
 REPO_DIR=~/top500-benchmark
-RESULTS_FILE=~/benchmarks/top500-results.txt
+RESULTS_FILE=~/Benchy/top500-results.txt
 
 # Ensure pip and ansible are available
 pip3 install ansible --break-system-packages 2>/dev/null || pip3 install ansible
@@ -25,7 +25,7 @@ EOF
 
 # Run benchmark (setup + benchmark only, skip SSH cluster config)
 echo "Running top500 HPL benchmark (single node)..."
-mkdir -p ~/benchmarks
+mkdir -p ~/Benchy
 
 ansible-playbook main.yml --tags "setup,benchmark" 2>&1 | tee "$RESULTS_FILE"
 
