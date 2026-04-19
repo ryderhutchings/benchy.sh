@@ -1,4 +1,4 @@
-# benchy.sh
+# Benchy
 
 Prototype script setup for automating [Jeff Geerling's SBC benchmark workflow](https://github.com/geerlingguy/sbc-reviews).
 
