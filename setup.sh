@@ -105,5 +105,16 @@ if [[ -n "$GM_URL" ]]; then
     chmod +x "$BASE/GravityMark.run"
 fi
 
+# phoronix test suite
+sudo apt install -y phoronix-test-suite php-cli php-xml
+
+phoronix-test-suite install pts/encode-mp3
+phoronix-test-suite install pts/x264
+phoronix-test-suite install pts/phpbench
+phoronix-test-suite install pts/build-linux-kernel
+
+printf "y\nn\nn\n" | phoronix-test-suite system-info
+printf "y\nn\nn\nn\nn\nn\nn\n" | phoronix-test-suite batch-setup
+
 echo ""
 echo "[*] Setup complete. Benchmarks ready in $BASE"
