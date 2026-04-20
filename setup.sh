@@ -65,7 +65,7 @@ wget -q -O "$BASE/sbc-bench.sh" https://raw.githubusercontent.com/ThomasKaiser/s
 chmod +x "$BASE/disk-benchmark.sh" "$BASE/sbc-bench.sh"
 
 # Geekbench
-mkdir -p "$HOME/geekbench6"
+mkdir -p "$BASE/geekbench6"
 ARCH=$(uname -m)
 
 if [[ "$ARCH" == "aarch64" ]]; then
@@ -80,10 +80,10 @@ else
 fi
 
 if [[ -n "$GB_URL" ]]; then
-    wget "$GB_URL" -O "$HOME/geekbench6/geekbench.tar.gz"
-    tar -xzf "$HOME/geekbench6/geekbench.tar.gz" -C "$HOME/geekbench6"
-    rm "$HOME/geekbench6/geekbench.tar.gz"
-    sudo ln -sf "$HOME/geekbench6/$GB_DIR/geekbench6" /usr/local/bin/geekbench6
+    wget "$GB_URL" -O "$BASE/geekbench6/geekbench.tar.gz"
+    tar -xzf "$BASE/geekbench6/geekbench.tar.gz" -C "$BASE/geekbench6"
+    rm "$BASE/geekbench6/geekbench.tar.gz"
+    sudo ln -sf "$BASE/geekbench6/$GB_DIR/geekbench6" /usr/local/bin/geekbench6
     echo "Geekbench installed: $(geekbench6 --version 2>/dev/null || echo 'run geekbench6')"
 fi
 
@@ -98,8 +98,8 @@ else
 fi
 
 if [[ -n "$GM_URL" ]]; then
-    wget "$GM_URL" -O "$HOME/GravityMark.run"
-    chmod +x "$HOME/GravityMark.run"
+    wget "$GM_URL" -O "$BASE/GravityMark.run"
+    chmod +x "$BASE/GravityMark.run"
 fi
 
 echo ""
