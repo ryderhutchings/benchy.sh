@@ -38,6 +38,8 @@ These still require a display or manual intervention:
 - **nuttcp** — requires a server: `nuttcp -t $SERVER_IP`
 - **lstopo** — `lstopo lstopo.png`
 - **stress-ng** — `stress-ng --matrix 0` (monitor power draw at wall)
+- **Thermals** — record temps manually.
+- **Power draw** — measure at wall with a meter during each benchmark.
 
 ## References
 - [Jeff Geerling's sbc-reviews](https://github.com/geerlingguy/sbc-reviews)
