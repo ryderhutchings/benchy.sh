@@ -1,13 +1,14 @@
 #!/bin/bash
 set -e
 
-RESULTS_FILE=~/Benchy/sbc-bench-results.txt
+BASE="$HOME/Benchy"
+RESULTS_FILE="$BASE/sbc-bench-results.txt"
 
-mkdir -p ~/Benchy
+mkdir -p "$BASE"
 
-echo "Running sbc-bench..."
+echo "[*] Running sbc-bench..."
 
-sudo /bin/bash ~/Benchy/sbc-bench.sh -r 2>&1 | tee "$RESULTS_FILE"
+sudo /bin/bash "$BASE/sbc-bench.sh" -r 2>&1 | tee "$RESULTS_FILE"
 
 echo ""
-echo "Results saved to $RESULTS_FILE"
+echo "[*] Results saved to $RESULTS_FILE"
