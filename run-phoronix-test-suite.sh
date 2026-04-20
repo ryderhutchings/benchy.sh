@@ -19,11 +19,9 @@ cd "$PTS_DIR"
 # Ensure PTS runs from correct directory
 export PTS_CORE_PATH="$PTS_DIR"
 
-# Benchmarks
 ./phoronix-test-suite batch-run pts/encode-mp3
 ./phoronix-test-suite batch-run pts/phpbench
 
-# x264 and kernel build often prompt, so we pre-answer
 echo "1" | ./phoronix-test-suite batch-run pts/x264
 echo "1" | ./phoronix-test-suite batch-run pts/build-linux-kernel
 
