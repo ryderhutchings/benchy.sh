@@ -6,7 +6,7 @@ RESULTS_FILE="$BASE/sbc-general-benchmark-results.txt"
 
 mkdir -p "$BASE"
 
-if [ ! -f "$BASE/sbc-general-benchmark.sh" ]; then
+if [ ! -f "$BASE/sbc-general-benchmark/sbc-general-benchmark.sh" ]; then
     echo "[!] sbc-general-benchmark.sh not found in $BASE"
     exit 1
 fi
