@@ -5,6 +5,9 @@ BASE="$HOME/Benchy"
 REPO_DIR="$BASE/top500-benchmark"
 RESULTS_FILE="$BASE/top500-results.txt"
 
+COMPLETED_DIR="$BASE/DONE"
+mkdir -p "$COMPLETED_DIR"
+
 mkdir -p "$BASE"
 
 # Ensure pip and ansible are available
@@ -32,3 +35,5 @@ sudo ansible-playbook main.yml --tags "setup,benchmark" -K | tee "$RESULTS_FILE"
 
 echo ""
 echo "[*] Results saved to $RESULTS_FILE"
+
+mv "$(realpath "$0")" "$COMPLETED_DIR/"
