@@ -19,12 +19,16 @@ This installs all dependencies, clones repos, pulls Ollama models, and downloads
 ## Benchmark Scripts
 | Script | What it runs | Output |
 |---|---|---|
-| `run-top500-benchmark.sh` | HPL Linpack (single node) | `~/benchmarks/top500-results.txt` |
-| `run-ai-benchmark.sh` | Ollama LLM inference (llama3.2:3b, llama3.1:8b, llama2:13b) | `~/benchmarks/ai-results.txt` |
-| `run-tinymembench.sh` | tinymembench | `~/benchmarks/memory-results.txt` |
-| `run-disk-benchmark.sh` | iozone via disk-benchmark.sh | `~/benchmarks/disk-results.txt` |
-| `run-sbc-bench.sh` | sbc-bench (uploads result to public URL) | `~/benchmarks/sbc-bench-results.txt` |
-| `run-phoronix-test-suite.sh` | Phoronix Test Suite | `~/benchmarks/phoronix-results.txt` |
+| `run-top500-benchmark.sh` | HPL Linpack (single node) | `~/Benchy/top500-results.txt` |
+| `run-ai-benchmark.sh` | Ollama LLM inference (tinyllama:1.1b, deepseek-r1:1.5b, llama3.2:3b) | `~/Benchy/ai-results.txt` |
+| `run-tinymembench.sh` | tinymembench | `~/Benchy/memory-results.txt` |
+| `run-disk-benchmark.sh` | iozone via disk-benchmark.sh | `~/Benchy/disk-results.txt` |
+| `run-sbc-bench.sh` | sbc-bench (uploads result to public URL) | `~/Benchy/sbc-bench-results.txt` |
+| `run-phoronix-test-suite.sh` | Phoronix Test Suite (encode-mp3, x264, phpbench, build-linux-kernel) | `~/Benchy/pts-results.txt` |
+| `run-geekbench6.sh` | Geekbench 6 (2 runs) | `~/Benchy/geekbench6-results.txt` |
+| `run-glmark2.sh` | glmark2-es2 (requires display) | `~/Benchy/glmark2-results.txt` |
+| `run-vkmark.sh` | vkmark (requires display) | `~/Benchy/vkmark-results.txt` |
+| `run-sysbench.sh` | sysbench CPU | `~/Benchy/sysbench-results.txt` |
 
 ## Manual Steps
 These still require a display or manual download:
