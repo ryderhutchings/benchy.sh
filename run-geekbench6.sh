@@ -33,8 +33,6 @@ CLAIM2=$(grep -o 'https://browser.geekbench.com/v6/cpu/[0-9]*' "$RESULTS_FILE" |
 
 echo ""
 echo "================================"
-echo " Geekbench 6 Claim Links"
-echo "================================"
 echo "Run 1: ${CLAIM1:-not found}"
 echo "Run 2: ${CLAIM2:-not found}"
 echo "================================" | tee -a "$RESULTS_FILE"
