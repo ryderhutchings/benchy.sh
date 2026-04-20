@@ -106,18 +106,20 @@ if [[ -n "$GM_URL" ]]; then
 fi
 
 # phoronix test suite
-PTS_VERSION="${PTS_VERSION:-10.8.4}"
-curl -LO https://www.phoronix-test-suite.com/releases/phoronix-test-suite-${PTS_VERSION}.tar.gz
-tar -xvf phoronix-test-suite-${PTS_VERSION}.tar.gz
-cd $BASE/phoronix-test-suite-${PTS_VERSION}
+curl -L -o phoronix-test-suite-10.8.4.tar.gz \
+https://github.com/phoronix-test-suite/phoronix-test-suite/releases/download/v10.8.4/phoronix-test-suite-10.8.4.tar.gz
 
-phoronix-test-suite install pts/encode-mp3
-phoronix-test-suite install pts/x264
-phoronix-test-suite install pts/phpbench
-phoronix-test-suite install pts/build-linux-kernel
+tar -xvf phoronix-test-suite-10.8.4.tar.gz
+cd phoronix-test-suite
 
-printf "y\nn\nn\n" | phoronix-test-suite system-info
-printf "y\nn\nn\nn\nn\nn\nn\n" | phoronix-test-suite batch-setup
+./phoronix-test-suite system-info
+
+printf "y\nn\nn\n" | ./phoronix-test-suite batch-setup
+
+./phoronix-test-suite install pts/encode-mp3
+./phoronix-test-suite install pts/x264
+./phoronix-test-suite install pts/phpbench
+./phoronix-test-suite install pts/build-linux-kernel
 
 echo ""
 echo "[*] Setup complete. Benchmarks ready in $BASE"
