@@ -50,7 +50,7 @@ ollama pull llama3.2:3b
 [ ! -d "$BASE/top500-benchmark" ] && git clone https://github.com/geerlingguy/top500-benchmark.git "$BASE/top500-benchmark"
 [ ! -d "$BASE/ai-benchmarks" ] && git clone https://github.com/geerlingguy/ai-benchmarks.git "$BASE/ai-benchmarks"
 [ ! -d "$BASE/tinymembench" ] && git clone https://github.com/rojaster/tinymembench.git "$BASE/tinymembench"
-[ ! -d "$BASE/sbc-general-benchmark" ] && git clone https://github.com/geerlingguy/sbc-general-benchmark.git "$BASE/sbc-general-benchmark"
+[ ! -d "$BASE/sbc-general-benchmark" ] && git clone https://gist.github.com/570e13f4f81a40a5395688667b1f79af.git "$BASE/sbc-general-benchmark"
 
 echo "[*] PTS ready in $BASE"
 
