@@ -13,7 +13,7 @@ fi
 
 echo "[*] Running sbc-general-benchmark (PTS wrapper)..."
 
-sudo bash "$BASE/sbc-general-benchmark.sh" -r 2>&1 | tee "$RESULTS_FILE"
+sudo bash "$BASE/sbc-general-benchmark/sbc-general-benchmark.sh" -r 2>&1 | tee "$RESULTS_FILE"
 
 echo ""
 echo "[✓] Results saved to $RESULTS_FILE"
