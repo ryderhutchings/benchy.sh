@@ -4,6 +4,9 @@ set -euo pipefail
 BASE="$HOME/Benchy"
 RESULTS_FILE="$BASE/glmark2-results.txt"
 
+COMPLETED_DIR="$BASE/DONE"
+mkdir -p "$COMPLETED_DIR"
+
 mkdir -p "$BASE"
 
 if ! command -v glmark2-es2 >/dev/null 2>&1; then
@@ -26,3 +29,5 @@ DISPLAY=:0 glmark2-es2
 
 echo ""
 echo "[✓] Results saved to $RESULTS_FILE"
+
+mv "$(realpath "$0")" "$COMPLETED_DIR/"
