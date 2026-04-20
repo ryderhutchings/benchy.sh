@@ -105,17 +105,29 @@ if [[ -n "$GM_URL" ]]; then
     chmod +x "$BASE/GravityMark.run"
 fi
 
-# phoronix test suite
-curl -L -o phoronix-test-suite-10.8.4.tar.gz \
-https://github.com/phoronix-test-suite/phoronix-test-suite/releases/download/v10.8.4/phoronix-test-suite-10.8.4.tar.gz
+# Phoronix Test Suite
+PTS_VERSION="10.8.4"
+PTS_TAR="phoronix-test-suite-${PTS_VERSION}.tar.gz"
+PTS_URL="https://github.com/phoronix-test-suite/phoronix-test-suite/releases/download/v${PTS_VERSION}/${PTS_TAR}"
 
-tar -xvf phoronix-test-suite-10.8.4.tar.gz
-cd phoronix-test-suite
+echo "[*] Downloading Phoronix Test Suite..."
+wget -O "$BASE/$PTS_TAR" "$PTS_URL"
 
-./phoronix-test-suite system-info
+echo "[*] Extracting PTS..."
+tar -xzf "$BASE/$PTS_TAR" -C "$BASE"
 
-printf "y\nn\nn\n" | ./phoronix-test-suite batch-setup
+PTS_DIR="$BASE/phoronix-test-suite-${PTS_VERSION}"
+cd "$PTS_DIR"
 
+chmod +x phoronix-test-suite
+
+echo "[*] Running system info..."
+printf "y\nn\nn\n" | ./phoronix-test-suite system-info || true
+
+echo "[*] Batch setup..."
+printf "y\nn\nn\nn\nn\nn\nn\n" | ./phoronix-test-suite batch-setup || true
+
+echo "[*] Installing benchmarks..."
 ./phoronix-test-suite install pts/encode-mp3
 ./phoronix-test-suite install pts/x264
 ./phoronix-test-suite install pts/phpbench
