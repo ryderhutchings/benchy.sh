@@ -28,7 +28,7 @@ EOF
 
 echo "[*] Running top500 HPL benchmark (single node)..."
 
-ansible-playbook main.yml --tags "setup,benchmark" -K --become | tee "$RESULTS_FILE"
+sudo ansible-playbook main.yml --tags "setup,benchmark" -K | tee "$RESULTS_FILE"
 
 echo ""
 echo "[*] Results saved to $RESULTS_FILE"
