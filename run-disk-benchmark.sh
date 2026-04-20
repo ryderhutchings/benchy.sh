@@ -1,13 +1,13 @@
 #!/bin/bash
-set -e
+set -euo pipefail
 
-RESULTS_FILE=~/Benchy/disk-results.txt
+BASE="$HOME/Benchy"
+RESULTS_FILE="$BASE/disk-results.txt"
 
-mkdir -p ~/benchmarks
+mkdir -p "$BASE"
 
-echo "Running disk benchmark..."
+echo "[*] Running disk benchmark..."
 
-sudo MOUNT_PATH=/ TEST_SIZE=1g ~/Benchy/disk-benchmark.sh 2>&1 | tee "$RESULTS_FILE"
+sudo MOUNT_PATH=/ TEST_SIZE=1g "$BASE/disk-benchmark.sh" 2>&1 | tee "$RESULTS_FILE"
 
-echo ""
-echo "Results saved to $RESULTS_FILE"
+echo "[✓] Results saved to $RESULTS_FILE"
