@@ -4,7 +4,7 @@ set -euo pipefail
 BASE="$HOME/Benchy"
 RESULTS_FILE="$BASE/geekbench6-results.txt"
 COMPLETED_DIR="$BASE/DONE"
-GB_DIR="$BASE/geekbench6/Geekbench-6.7.0-Linux"
+GB_DIR="$BASE/geekbench6/Geekbench-6.7.0-*"
 GB_BIN="$GB_DIR/geekbench6"
 SCRIPT_PATH="$(realpath "$0")"
 
