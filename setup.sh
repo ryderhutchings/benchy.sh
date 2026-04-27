@@ -24,7 +24,8 @@ sudo apt install -y \
     fastfetch \
     screenfetch \
     gnuplot \
-    stress-ng
+    stress-ng \
+    nuttcp
 
 sudo apt install -y vkmark || echo "[!] vkmark not available via apt"
 
