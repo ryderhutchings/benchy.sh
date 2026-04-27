@@ -4,7 +4,7 @@ set -euo pipefail
 REPO_DIR="$HOME/Benchy/ai-benchmarks"
 RESULTS_FILE="$HOME/Benchy/ai-results.txt"
 
-COMPLETED_DIR="$BASE/DONE"
+COMPLETED_DIR="$HOME/Benchy/DONE"
 mkdir -p "$COMPLETED_DIR"
 
 mkdir -p "$HOME/Benchy"
